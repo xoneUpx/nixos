@@ -111,6 +111,9 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
   networking.firewall.trustedInterfaces = ["tailscale0"];
+	
+  #add tailscale
+  services.tailscale.enable = true;
 
   #allow users to access nix daemon
   nix.settings.allowed-users = ["@wheel" "root"];
