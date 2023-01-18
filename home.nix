@@ -28,6 +28,11 @@ in
 	];
   home.file = {
 	".xinitrc".text = ''exec i3'';
+	".bashrc".source = .dotfiles/bash/.bashrc;
+	".config/init.vim".source = .dotfiles/nvim/.config/init.vim;
+	".local/bin/.tmux-cht-command".source = .dotfiles/tmux/.tmux-cht-command;
+	".local/bin/.tmux-cht-languages".source = .dotfiles/tmux/.tmux-cht-languages;
+	".tmux.conf".source = .dotfiles/tmux/.tmux.conf;
 	};
 
   xsession.enable = true;
