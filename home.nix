@@ -26,12 +26,14 @@ in
 	git
 	#neovim
 	vim
+  direnv
 	];
   home.file = {
 	".xinitrc".text = ''exec i3'';
 	#".bashrc" = { source = ./dotfiles/bash/.bashrc; recursive = true;};
 	".bashrc".source = ./dotfiles/bash/.bashrc;
 	".config/nvim/init.vim".source = ./dotfiles/nvim/.config/init.vim;
+	".config/nvim/init.vim".source = ./dotfiles/nvim/.config/coc-settings.json;
 	".local/bin/.tmux-cht-command".source = ./dotfiles/tmux/.tmux-cht-command;
 	".local/bin/.tmux-cht-languages".source = ./dotfiles/tmux/.tmux-cht-languages;
 	".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
