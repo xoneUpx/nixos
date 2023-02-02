@@ -21,7 +21,14 @@
       homeConfigurations = {
         bobok = home-manager.lib.homeManagerConfiguration {
           inherit system pkgs;
-          modules = [ ./home.nix ];
+          modules = [ ./home.nix 
+	  {	home = { 
+			username = "bobok";
+			homeDirectory = "/home/bobok";
+			stateVersion  ="22.11";
+			};
+		}
+		];
         };
       };
       nixosConfigurations = {
