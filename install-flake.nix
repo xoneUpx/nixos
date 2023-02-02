@@ -9,7 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager,... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -18,23 +18,18 @@
       };
       lib = nixpkgs.lib;
     in {
-      #homeConfigurations = {
-      #  bobok = home-manager.lib.homeManagerConfiguration {
-      #    inherit system pkgs;
-      #    modules = [ ./home.nix ];
-      #  };
-      #};
-      nixosConfigurations = {
+      homeManagerConfigurations = {
+        bobok = home-manager.lib.homeManagerConfiguration {
+          inherit system pkgs;
+          modules = [ ./home.nix ];
+        };
+      };
+    nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-		./configuration.nix
-		home-manager.nixosModules.home-manager {
-		  home-manager.useGlobalPkgs = true;
-		  home-manager.useUserPackages = true;
-		  home-manager.users.bobok = { imports = [ ./home.nix ];};
-		}
-	];
+          ./configuration.nix
+        ];
       };
     };
   };

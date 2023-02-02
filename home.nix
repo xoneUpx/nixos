@@ -17,22 +17,24 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  #home.stateVersion = "22.11";
-  home.stateVersion = "22.05";
+  home.stateVersion = "22.11";
+  #home.stateVersion = "22.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
 	git
+	#neovim
 	vim
 	];
   home.file = {
 	".xinitrc".text = ''exec i3'';
-	".bashrc".source = .dotfiles/bash/.bashrc;
-	".config/init.vim".source = .dotfiles/nvim/.config/init.vim;
-	".local/bin/.tmux-cht-command".source = .dotfiles/tmux/.tmux-cht-command;
-	".local/bin/.tmux-cht-languages".source = .dotfiles/tmux/.tmux-cht-languages;
-	".tmux.conf".source = .dotfiles/tmux/.tmux.conf;
+	#".bashrc" = { source = ./dotfiles/bash/.bashrc; recursive = true;};
+	".bashrc".source = ./dotfiles/bash/.bashrc;
+	".config/nvim/init.vim".source = ./dotfiles/nvim/.config/init.vim;
+	".local/bin/.tmux-cht-command".source = ./dotfiles/tmux/.tmux-cht-command;
+	".local/bin/.tmux-cht-languages".source = ./dotfiles/tmux/.tmux-cht-languages;
+	".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
 	};
 
   xsession.enable = true;
