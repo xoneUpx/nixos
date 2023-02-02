@@ -18,12 +18,12 @@
       };
       lib = nixpkgs.lib;
     in {
-      #homeConfigurations = {
-      #  bobok = home-manager.lib.homeManagerConfiguration {
-      #    inherit system pkgs;
-      #    modules = [ ./home.nix ];
-      #  };
-      #};
+      homeConfigurations = {
+        bobok = home-manager.lib.homeManagerConfiguration {
+          inherit system pkgs;
+          modules = [ ./home.nix ];
+        };
+      };
       nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
