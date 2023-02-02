@@ -36,7 +36,7 @@ in
 #	".local/bin/.tmux-cht-languages".source = ./dotfiles/tmux/.tmux-cht-languages;
 #	".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
 #	};
-   home.file.".bashrc".source = ./dotfiles/bash/.bashrc;
+   home.file.".bashrc" = { source = ./dotfiles/bash/.bashrc; recursive = true;};
 
   xsession.enable = true;
   xsession.windowManager.i3 = {
