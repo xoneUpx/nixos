@@ -24,7 +24,6 @@
           #inherit system pkgs;
           inherit pkgs;
           modules = [ ./home.nix 
-    ./test.nix
 	  {	home = { 
 			username = "bobok";
 			homeDirectory = "/home/bobok";
@@ -43,7 +42,8 @@
 		  home-manager.useGlobalPkgs = true;
       home-manager.extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
 		  home-manager.useUserPackages = true;
-		  home-manager.users.bobok = { imports = [ ./home.nix ./test.nix ];};  
+		  #home-manager.users.bobok = { imports = [ ./home.nix ./test.nix ];};  
+		  home-manager.users.bobok = { imports = [ ./home.nix ];};  
 		}
 	];
       };
