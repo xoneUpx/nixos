@@ -28,6 +28,7 @@ in
 	vim
   direnv
 	];
+  imports = [ ./test.nix ];
   home.file = {
 	".xinitrc".text = ''exec i3'';
 	#".config/test".source = ./test.nix;
