@@ -9,15 +9,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-      #pkgs = import nixpkgs {
-      #  inherit system;
-      #  config = { allowUnfree = true; };
-      #};
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+      };
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+      #pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations = {
         bobok = home-manager.lib.homeManagerConfiguration {
@@ -40,6 +40,7 @@
 		./configuration.nix
 		home-manager.nixosModules.home-manager {
 		  home-manager.useGlobalPkgs = true;
+      home-manager.extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
 		  home-manager.useUserPackages = true;
 		  home-manager.users.bobok = { imports = [ ./home.nix ];};
 		}
