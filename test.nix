@@ -1,1 +1,1 @@
-home.file."test".text = ''lol''
+{home.file."test".text = ''lol'';}
