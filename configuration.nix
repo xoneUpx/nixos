@@ -114,18 +114,20 @@
 	
   #add tailscale
   services.tailscale.enable = true;
+  virtualisation.docker.enable = true;
 
   users.users.bobok = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     thunderbird
-  #   ];
+     extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
+     #packages = with pkgs; [
+     #  home-manager
+     #];
    };
   #allow users to access nix daemon
   nix.settings.allowed-users = ["@wheel" "root"];
+  #nix.settings.allowed-users = ["bobok" "root"];
   #nix.settings.allowed-users = ["root"];
+  #home-manager.users.bobok = {imports = [./home.nix]; };
 
   
   # Copy the NixOS configuration file and link it from the resulting system
@@ -141,7 +143,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
   #system.stateVersion = "22.05"; # Did you read the comment?
-  environment.pathsToLink = [ "/libexec" ];
+  #environment.pathsToLink = [ "/libexec" ];
   services.xserver = {
     enable = true;
     xkbOptions = "caps:swapescape";

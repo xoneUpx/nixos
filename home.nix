@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let 
   modifier = "Mod4";
@@ -28,10 +28,12 @@ in
 	vim
   direnv
 	];
-  imports = [ ./test.nix ];
+  #imports = [ ./test.nix ];
+  #imports = [ ./dotfiles ];
   home.file = {
 	".xinitrc".text = ''exec i3'';
-	#".config/test".source = ./test.nix;
+	".xinitrc2".text = ''exec i3'';
+	#".config/test".source = ./dotfiles/todo;
 	#".bashrc".source = ./dotfiles/bash/.bashrc;
 	#".config/nvim/init.vim".source = ./dotfiles/nvim/.config/init.vim;
 	#".config/nvim/coc-settings.json".source = ./dotfiles/nvim/.config/coc-settings.json;
