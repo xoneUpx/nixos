@@ -36,11 +36,11 @@ in
 	#".config/test".source = ./dotfiles/todo;
 	#".bashrc".source = ./bash/.bashrc;
 	".bashrc".source = ./dotfiles/bash/.bashrc;
-	".config/nvim/init.vim".source = ./dotfiles/nvim/.config/init.vim;
-	".config/nvim/coc-settings.json".source = ./dotfiles/nvim/.config/coc-settings.json;
-	".local/bin/.tmux-cht-command".source = ./dotfiles/tmux/.tmux-cht-command;
-	".local/bin/.tmux-cht-languages".source = ./dotfiles/tmux/.tmux-cht-languages;
-	".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
+	#".config/nvim/init.vim".source = ./dotfiles/nvim/.config/init.vim;
+	#".config/nvim/coc-settings.json".source = ./dotfiles/nvim/.config/coc-settings.json;
+	#".local/bin/.tmux-cht-command".source = ./dotfiles/tmux/.tmux-cht-command;
+	#".local/bin/.tmux-cht-languages".source = ./dotfiles/tmux/.tmux-cht-languages;
+	#".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
 	};
 
   xsession.enable = true;
