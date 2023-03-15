@@ -2,6 +2,8 @@
 
 let 
   modifier = "Mod4";
+  #must it be from inputs?
+  dots = inputs.dotfiles;
 in 
 {
   # Home Manager needs a bit of information about you and the
@@ -28,19 +30,24 @@ in
 	vim
   direnv
   ctags
+  fzf
+  tmux
 	];
   #imports = [ ./test.nix ];
   #imports = [ ./dotfiles ];
   home.file = {
 	".xinitrc".text = ''exec i3'';
-	#".config/test".source = ./dotfiles/todo;
-	#".bashrc".source = ./bash/.bashrc;
-	".bashrc".source = ./dotfiles/bash/.bashrc;
-	#".config/nvim/init.vim".source = ./dotfiles/nvim/.config/init.vim;
-	#".config/nvim/coc-settings.json".source = ./dotfiles/nvim/.config/coc-settings.json;
-	#".local/bin/.tmux-cht-command".source = ./dotfiles/tmux/.tmux-cht-command;
-	#".local/bin/.tmux-cht-languages".source = ./dotfiles/tmux/.tmux-cht-languages;
-	#".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
+  ## git submodules are not working?
+	".bashrc".source = "${dots}/bash/.bashrc";
+	".config/nvim/init.vim".source = "${dots}/nvim/.config/init.vim";
+	".config/nvim/coc-settings.json".source = "${dots}/nvim/.config/coc-settings.json";
+	".local/bin/tmux-cht-command".source = "${dots}/tmux/.tmux-cht-command";
+	".local/bin/tmux-cht-languages".source = "${dots}/tmux/.tmux-cht-languages";
+	".local/bin/tmux-sessionizer.sh".source = "${dots}/bin/.local/bin/tmux-sessionizer.sh";
+	".local/bin/tmux-cht.sh".source = "${dots}/bin/.local/bin/tmux-cht.sh";
+	".local/bin/neww.sh".source = "${dots}/bin/.local/bin/neww.sh";
+	".local/bin/killw.sh".source = "${dots}/bin/.local/bin/killw.sh";
+	".tmux.conf".source = "${dots}/tmux/.tmux.conf";
 	};
 
   xsession.enable = true;

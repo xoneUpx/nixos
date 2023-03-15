@@ -16,7 +16,7 @@
   boot.loader.grub.device = "/dev/sdc"; # or "nodev" for efi only
   boot.initrd.luks.devices = {
   "root"= {
-    device="/dev/disk/by-uuid/6c6cf056-57cd-4499-bfcc-28fb66207f61";
+    device="/dev/disk/by-uuid/1d79d89b-cab2-4df6-aab0-18660a11ce58";
     preLVM = true;
     };};
 

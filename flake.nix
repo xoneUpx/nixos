@@ -7,6 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    dotfiles = {url = "github:xoneupx/dotfiles"; flake = false;};
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -38,7 +39,7 @@
       nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
+        #specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
         modules = [
 		./configuration.nix
 		home-manager.nixosModules.home-manager {
