@@ -7,6 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    inputs.agenix.url = "github:ryantm/agenix";
     dotfiles = {url = "github:xoneupx/dotfiles"; flake = false;};
   };
 
@@ -27,6 +28,7 @@
           #inherit system pkgs;
           inherit pkgs;
           modules = [ ./home.nix 
+          agenix.nixosModules.default
 	  {	home = { 
 			username = "bobok";
 			homeDirectory = "/home/bobok";
