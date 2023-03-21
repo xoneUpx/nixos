@@ -1,4 +1,4 @@
-{ config, pkgs, callPackage, ... }:
+{ config, pkgs, callPackage, inputs, ... }:
 
 {
   imports =
@@ -144,6 +144,7 @@
   system.stateVersion = "22.11"; # Did you read the comment?
   #system.stateVersion = "22.05"; # Did you read the comment?
   #environment.pathsToLink = [ "/libexec" ];
+  environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ];
   services.xserver = {
     enable = true;
     xkbOptions = "caps:swapescape";

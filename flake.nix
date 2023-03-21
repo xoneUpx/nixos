@@ -42,7 +42,7 @@
       nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         inherit system;
-        #specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
+        specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
         modules = [
 		./configuration.nix
     agenix.nixosModules.default
