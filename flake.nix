@@ -7,11 +7,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    inputs.agenix.url = "github:ryantm/agenix";
+    agenix.url = "github:ryantm/agenix";
+#optional?
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
     dotfiles = {url = "github:xoneupx/dotfiles"; flake = false;};
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs:
   #outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
@@ -28,7 +30,6 @@
           #inherit system pkgs;
           inherit pkgs;
           modules = [ ./home.nix 
-          agenix.nixosModules.default
 	  {	home = { 
 			username = "bobok";
 			homeDirectory = "/home/bobok";
@@ -44,6 +45,7 @@
         #specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
         modules = [
 		./configuration.nix
+    agenix.nixosModules.default
 		home-manager.nixosModules.home-manager {
 		  home-manager.useGlobalPkgs = true;
       home-manager.extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
